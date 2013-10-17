@@ -8,5 +8,6 @@ argparse==1.2.1
 django-notification==1.1.1
 wsgiref==0.1.2
 python-social-auth==0.1.14
+MySQL-python==1.2.4
 
 -e git+https://github.com/johnmonash/django-badger@aa2bf37aa262f7e11f769aa29b8cc01ea934d62e#egg=django_badger-master
