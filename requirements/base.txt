@@ -1,0 +1,12 @@
+Django==1.5.4
+South==0.8.2
+django-braces==1.2.2
+django-model-utils==1.4.0
+logutils==0.3.3
+Pillow==2.2.1
+argparse==1.2.1
+django-notification==1.1.1
+wsgiref==0.1.2
+python-social-auth==0.1.14
+
+-e git+https://github.com/johnmonash/django-badger@aa2bf37aa262f7e11f769aa29b8cc01ea934d62e#egg=django_badger-master
