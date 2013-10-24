@@ -138,6 +138,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
@@ -199,12 +201,25 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'badger',
+    'longerusername',
+    'social.apps.django_app.default',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## END APP CONFIGURATION
 
+MAX_USERNAME_LENGTH = 75  # for longerusername. In line with django's max email length; would be cleaner to create
+                          # custom user model
+
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.google.GoogleOpenId',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = False
 
 ########## LOGGING CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#logging
@@ -243,3 +258,11 @@ LOGGING = {
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 ########## END WSGI CONFIGURATION
+
+
+BADGER_SITE_ISSUER = {
+    'origin': 'http://badge.jmss.monash.edu', # TODO - define SITE_URL, use this instead SITE_URL,
+    'name': 'JMSS Badge',
+    'org': 'John Monash Science School',
+    'contact': 'john.monash.ss@edumail.vic.gov.au',
+}

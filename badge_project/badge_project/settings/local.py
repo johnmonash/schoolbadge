@@ -25,11 +25,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': normpath(join(DJANGO_ROOT, 'default.db')),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'badge_dev',
+        'USER': 'badge',
+        'PASSWORD': '29aFXtypJ53Q',
+        'HOST': '127.0.0.1',
         'PORT': '',
     }
 }
