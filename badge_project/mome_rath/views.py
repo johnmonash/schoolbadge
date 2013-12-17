@@ -1,0 +1,46 @@
+from django.views.generic import TemplateView, CreateView, UpdateView
+from django.shortcuts import get_object_or_404, render
+from django.core.urlresolvers import reverse
+
+from .models import Badge, Award
+from .forms import BadgeCreateForm, BadgeEditForm
+
+class BadgeIndex(TemplateView):
+    pass
+
+class BadgeDetail(TemplateView):
+    template_name = "mome_rath/badge_detail.html"
+
+    def get(self, request, slug):
+        badge = get_object_or_404(Badge, slug__exact=slug)
+        return render(request, self.template_name, {"badge": badge})
+
+
+class BadgeCreate(CreateView):
+    model = Badge
+    template_name = "mome_rath/badge_create.html"
+    form_class = BadgeCreateForm
+ #   success_url = reverse('mome_rath.index')
+    #TODO - save current user as 'creator'
+'''
+    def post(self, request):
+        if request.method == 'POST':
+            form = BadgeCreateForm(request.POST)
+            if form.is_valid():
+                form.instance.creator = request.user
+                form.save()
+                obj = {'posted': True}
+                return HttpResponse(json.dumps(obj), mimetype='application/json')
+            else:
+              return render_to_response('planner/editor.html',
+                  form, context_instance=RequestContext(request),)
+'''
+
+class BadgeEdit(UpdateView):
+    model = Badge
+    template_name = "mome_rath/badge_edit.html"
+    form_class = BadgeEditForm
+#    success_url = reverse('mome_rath.index')
+
+
+#class AwardBadge()
