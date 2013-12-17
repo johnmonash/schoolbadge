@@ -151,6 +151,7 @@ TEMPLATE_LOADERS = (
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
 TEMPLATE_DIRS = (
     normpath(join(SITE_ROOT, 'templates')),
+    normpath(join(SITE_ROOT, 'schoolbadge', 'templates')),
 )
 ########## END TEMPLATE CONFIGURATION
 
@@ -200,23 +201,21 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'badger',
-    'longerusername',
     'social.apps.django_app.default',
+    'taggit',
+    'mome_rath',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## END APP CONFIGURATION
 
-MAX_USERNAME_LENGTH = 75  # for longerusername. In line with django's max email length; would be cleaner to create
-                          # custom user model
-
-
 AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOpenId',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+LOGIN_URL = '/login/google'
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = False
