@@ -1,0 +1,40 @@
+{% extends "mome_rath/base.html" %}
+{% load url from future %}
+{% comment %}
+{% load badger_tags %}
+{% endcomment %}
+{% block pageid %}badge_detail{% endblock %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+
+<section id="badge_detail">
+    <h2>Badge detail</h2>
+    {% include "mome_rath/includes/badge_full.html" %}
+</section>
+{% comment %}
+{% if award_list %}
+<section id="recent_awardees">
+    <h2>Recent awards</h2>
+    <nav><ul>
+        <li>
+            <a href="{% url 'badger.views.awards_list'  badge.slug %}">More...</a>
+            <a href="{% url 'badger.feeds.awards_by_badge' 'atom' badge.slug %}"><img src="/images/feed.png"  width="20" /></a>
+        </li>
+    </ul></nav>
+    <ul class="awardees clearfix">
+        {% for award in award_list %}
+            <li class="awardee">
+                <a href="{{ award.get_absolute_url }}" class="avatar_image"><img src="{% user_avatar award.user %}"
+                    alt="{{ award.badge.title }}" width="128" height="128" /></a>            
+                <a href="{{ award.get_absolute_url }}" class="label">
+                    <span class="user">{{ award.user }}</span></a>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+{%  endcomment %}
+{% endblock %}

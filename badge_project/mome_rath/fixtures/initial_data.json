@@ -1,0 +1,22 @@
+[
+    {
+        "model": "mome_rath.Badge",
+        "pk": 1,
+        "fields": {
+            "title": "Allowed to create badges",
+            "slug": "creator",
+            "description": "Anyone holding this badge is allowed to create badges",
+            "created": "2000-01-01T00:00:00.000Z"
+        }
+    },
+    {
+        "model": "mome_rath.Badge",
+        "pk": 2,
+        "fields": {
+            "title": "Allowed to award badges",
+            "slug": "awarder",
+            "description": "This is the minimum requirement to award a badge. Individual badges can specify other another badge which must be held as a pre-requisite to award, but this one is the default requirement.",
+            "created": "2000-01-01T00:00:00.000Z"
+        }
+    }
+]
