@@ -1,6 +1,8 @@
 from django.views.generic import TemplateView, CreateView, UpdateView
 from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse
+from django.conf import settings
+from django.contrib.auth import get_user_model
 
 from .models import Badge, Award
 from .forms import BadgeCreateForm, BadgeEditForm
@@ -42,5 +44,12 @@ class BadgeEdit(UpdateView):
     form_class = BadgeEditForm
 #    success_url = reverse('mome_rath.index')
 
+class AwardsByUser(TemplateView):
+    template_name = "mome_rath/awards_by_user.html"
+
+    def get(self, request, username):
+        user = get_object_or_404(get_user_model(), username__exact=username)
+        awards = Award.objects.filter(user=user)
+        return render(request, self.template_name, {'user': user, 'award_list': awards})
 
 #class AwardBadge()

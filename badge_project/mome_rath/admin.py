@@ -85,7 +85,7 @@ class BadgeAdmin(admin.ModelAdmin):
 
 
 def badge_link(self):
-    url = reverse('admin:badger_badge_change', args=[self.badge.id])
+    url = reverse('admin:mome_rath_badge_change', args=[self.badge.id])
     return '<a href="%s">%s</a>' % (url, self.badge)
 
 badge_link.allow_tags = True

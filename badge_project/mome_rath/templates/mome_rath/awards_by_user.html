@@ -1,17 +1,19 @@
-{% extends "badger/base.html" %}
+{% extends "base.html" %}
 {% load url from future %}
 
 {% block pageid %}badge_awards_by_user{% endblock %}
 
+{% comment %}
 {% block extrahead %}
     <link rel="alternate" type="application/atom+xml"
         title="{{ _('Recent awards') }}"
         href="{% url 'badger.feeds.awards_by_user' 'atom' user.username %}" />
 {% endblock %}
+{% endcomment %}
 
 {% block content %}
 <section class="awards_list">
     <h2>Awards for {{ user }}</h2>
-    {% include "badger/includes/awards_as_badges_list.html" %}
+    {% include "mome_rath/includes/awards_as_badges_list.html" %}
 </section>
 {% endblock %}

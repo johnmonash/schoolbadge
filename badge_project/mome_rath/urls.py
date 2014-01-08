@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^badge/(?P<slug>[^/]+)/edit?$', login_required(views.BadgeEdit.as_view()), name='mome_rath.badge_edit'),
     url(r'^new-badge$', login_required(views.BadgeCreate.as_view()), name='mome_rath.badge_create'),
 #    url(r'^badge/(?P<slug>[^/]+)/award', login_required(views.AwardBadge.as_view()), name='mome_rath.award_badge'),
-#    url(r'^user/(?P<username>[^/]+)/?$', 'awards_by_user', name='mome_rath.awards_by_user'),
+    url(r'^user/(?P<username>[^/]+)/?$', login_required(views.AwardsByUser.as_view()), name='mome_rath.awards_by_user'),
     )
 
 '''
