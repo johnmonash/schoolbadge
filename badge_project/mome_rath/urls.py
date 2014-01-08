@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^$', login_required(views.BadgeIndex.as_view()), name='mome_rath.index'),
     url(r'^badge/(?P<slug>[^/]+)/?$', login_required(views.BadgeDetail.as_view()), name='mome_rath.badge_detail'),
     url(r'^badge/(?P<slug>[^/]+)/edit?$', login_required(views.BadgeEdit.as_view()), name='mome_rath.badge_edit'),
-    url(r'^create$', login_required(views.BadgeCreate.as_view()), name='mome_rath.badge_create'),
+    url(r'^new-badge$', login_required(views.BadgeCreate.as_view()), name='mome_rath.badge_create'),
 #    url(r'^badge/(?P<slug>[^/]+)/award', login_required(views.AwardBadge.as_view()), name='mome_rath.award_badge'),
 #    url(r'^user/(?P<username>[^/]+)/?$', 'awards_by_user', name='mome_rath.awards_by_user'),
     )
