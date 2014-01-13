@@ -258,9 +258,9 @@ class Award(models.Model):
         by = self.creator and (u' by %s' % self.creator) or u''
         return u'Award of %s to %s%s' % (self.badge, self.user, by)
 
-    @models.permalink
+#    @models.permalink
     def get_absolute_url(self):
-        return ('badger.views.award_detail', (self.badge.slug, self.pk))
+        return reverse('mome_rath.award_detail', kwargs={'slug': self.badge.slug, 'id': self.pk})
 
     def get_upload_meta(self):
         u = self.user.username
