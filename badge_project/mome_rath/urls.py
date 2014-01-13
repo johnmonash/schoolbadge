@@ -15,6 +15,8 @@ urlpatterns = patterns('',
     url(r'^new-badge$', login_required(views.BadgeCreate.as_view()), name='mome_rath.badge_create'),
 #    url(r'^badge/(?P<slug>[^/]+)/award', login_required(views.AwardBadge.as_view()), name='mome_rath.award_badge'),
     url(r'^user/(?P<username>[^/]+)/?$', login_required(views.AwardsByUser.as_view()), name='mome_rath.awards_by_user'),
+    url(r'^badge/(?P<slug>[^/]+)/awards/(?P<id>\d+)/?$',
+        login_required(views.AwardDetail.as_view()), name='mome_rath.award_detail'),
     )
 
 '''
@@ -30,8 +32,6 @@ urlpatterns = patterns('',
     url(r'^badge/(?P<slug>[^/]+)/awards/(?P<id>\d+)\.json$', 'award_detail',
         kwargs=dict(format="json"),
         name='badger.award_detail_json'),
-    url(r'^badge/(?P<slug>[^/]+)/awards/(?P<id>\d+)/?$', 'award_detail',
-        name='badger.award_detail'),
     url(r'^badge/(?P<slug>[^/]+)/awards/(?P<id>\d+)/delete$', 'award_delete',
         name='badger.award_delete'),
     url(r'^badge/(?P<slug>[^/]+)/claims/(?P<claim_group>.+)\.pdf$', 'claims_list',

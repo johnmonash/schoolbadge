@@ -7,8 +7,10 @@ from django.contrib.auth import get_user_model
 from .models import Badge, Award
 from .forms import BadgeCreateForm, BadgeEditForm
 
+
 class BadgeIndex(TemplateView):
     pass
+
 
 class BadgeDetail(TemplateView):
     template_name = "mome_rath/badge_detail.html"
@@ -38,11 +40,13 @@ class BadgeCreate(CreateView):
                   form, context_instance=RequestContext(request),)
 '''
 
+
 class BadgeEdit(UpdateView):
     model = Badge
     template_name = "mome_rath/badge_edit.html"
     form_class = BadgeEditForm
 #    success_url = reverse('mome_rath.index')
+
 
 class AwardsByUser(TemplateView):
     template_name = "mome_rath/awards_by_user.html"
@@ -51,5 +55,15 @@ class AwardsByUser(TemplateView):
         user = get_object_or_404(get_user_model(), username__exact=username)
         awards = Award.objects.filter(user=user)
         return render(request, self.template_name, {'user': user, 'award_list': awards})
+
+
+class AwardDetail(TemplateView):
+    template_name = "mome_rath/award_detail.html"
+
+    def get(self, request, slug, id):
+        badge = get_object_or_404(Badge, slug=slug)
+        award = get_object_or_404(Award, badge=badge, pk=id)
+        return render(request, self.template_name, {"badge": badge, "award": award})
+
 
 #class AwardBadge()

@@ -1,5 +1,4 @@
 {% load url from future %}
-{% load badger_tags %}
 
 <dl class="award">
     <dt>Awarded to:</dt>
@@ -28,6 +27,7 @@
     <dt>Issued on:</dt>
         <dd>{{ award.created }}</dd>
 </dl>
+{%  comment %}
 {% if award|permissions_for:request.user|key:'delete_by' %}
 <dl class="actions">
     <dt>Actions:</dt>
@@ -36,3 +36,5 @@
     </ul></dd>
 </dl>
 {% endif %}
+
+{% endcomment %}
