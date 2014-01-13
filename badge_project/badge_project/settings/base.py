@@ -47,8 +47,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'badge_dev',
         'USER': 'badge',
-        'PASSWORD': '29aFXtypJ53Q',
-        'HOST': 'mysql.jmss.monash.edu',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '',
     }
 }
@@ -108,7 +108,7 @@ STATICFILES_FINDERS = (
 ########## SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # Note: This key should only be used for development and testing.
-SECRET_KEY = r"#H#0sgl2cHng#fxUP@b^Cud#98^4E!%MjLpk1Z0BW1vPxg9Tuf"
+SECRET_KEY = r""
 ########## END SECRET CONFIGURATION
 
 
